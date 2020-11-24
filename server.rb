@@ -3,10 +3,14 @@ require 'bundler/setup'
 require 'sinatra'
 require 'aws-sdk-core'
 
-$role_credentials = Aws::AssumeRoleCredentials.new(
-  role_arn: ENV['ROLE_ARN'],
-  role_session_name: "aws-credentials-server"
-)
+if ENV['CI']
+  $role_credentials = Aws::ECSCredentials.new
+else
+  $role_credentials = Aws::AssumeRoleCredentials.new(
+    role_arn: ENV['ROLE_ARN'],
+    role_session_name: "aws-credentials-server"
+  )
+end
 
 configure do
   set :bind, "0.0.0.0"
