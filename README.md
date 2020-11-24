@@ -1,4 +1,4 @@
-# aws-credentials-server
+# aws-credentials-server [![Build status](https://badge.buildkite.com/1dad36aae1fa8aeb5477fbeb9f6cfa5d6a68284faac8c2719d.svg)](https://buildkite.com/outstand/aws-credentials-server)
 
 aws-credentials-server is a tool to expose a specified IAM role to your development environment.
 
