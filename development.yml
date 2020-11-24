@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  server:
+    volumes:
+      - ".:/srv"
+      - ~/.aws:/home/srv/.aws
+      - ~/.awsvault:/home/srv/.awsvault
+    environment:
+      VIRTUAL_HOST: aws.test
+      VIRTUAL_PORT: 80
+      HTTPS_METHOD: noredirect
