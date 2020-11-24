@@ -6,13 +6,13 @@ steps:
   - label: ":ruby: Tests"
     command: rspec
     plugins:
-      - ecr#v2.1.1:
-          login: true
-          region: "us-east-1"
-
       - seek-oss/aws-sm#v2.2.1:
           env:
             ROLE_ARN: "/buildkite/aws-credentials-server/role_arn"
+
+      - ecr#v2.1.1:
+          login: true
+          region: "us-east-1"
 
       - https://github.com/outstand/docker-compose-buildkite-plugin.git#${PLUGIN_DOCKER_COMPOSE_VERSION}:
           run: server
