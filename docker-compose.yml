@@ -6,9 +6,7 @@ services:
     ports:
       - '80'
     environment:
-      VIRTUAL_HOST: aws.test
-      VIRTUAL_PORT: 80
-      HTTPS_METHOD: noredirect
       APP_ENV: development
       AWS_REGION: us-east-1
       ROLE_ARN:
+      AWS_CONTAINER_CREDENTIALS_RELATIVE_URI:
