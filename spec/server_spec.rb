@@ -30,11 +30,22 @@ RSpec.describe 'aws-credentials-server' do
     end
   end
 
-  # describe 'GET /latest/meta-data/iam/security-credentials/local-credentials' do
-  #   it 'returns temporary credentials' do
-  #     # TODO
-  #   end
-  # end
+  describe 'GET /latest/meta-data/iam/security-credentials/local-credentials' do
+    it 'returns temporary credentials' do
+      get '/latest/meta-data/iam/security-credentials/local-credentials'
+      expect(last_response).to be_ok
+      parsed = JSON.parse(last_response.body)
+      expect(parsed.keys).to include(
+        'Code',
+        'LastUpdated',
+        'Type',
+        'AccessKeyId',
+        'SecretAccessKey',
+        'Token',
+        'Expiration'
+      )
+    end
+  end
 
   describe 'GET /latest/meta-data/instance-id/' do
     it 'returns aws-credentials-server' do
@@ -64,7 +75,17 @@ RSpec.describe 'aws-credentials-server' do
     end
   end
 
-  # describe 'GET /latest/meta-data/dynamic/instance-identity/document' do
-  #   # TODO
-  # end
+  describe 'GET /latest/dynamic/instance-identity/document' do
+    let(:region) { 'us-west-2' }
+
+    before do
+      ENV['AWS_REGION'] = region
+    end
+
+    it 'returns the region' do
+      get '/latest/dynamic/instance-identity/document'
+      expect(last_response).to be_ok
+      expect(last_response.body).to eq %Q({"region":"#{region}"})
+    end
+  end
 end

@@ -35,7 +35,7 @@ get '/latest/meta-data/iam/info/?' do
   '{"Code": "Success"}'
 end
 
-get '/latest/meta-data/dynamic/instance-identity/document' do
+get '/latest/dynamic/instance-identity/document' do
   content_type :json
   {
     region: ENV['AWS_REGION']
