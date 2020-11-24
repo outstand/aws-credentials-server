@@ -12,7 +12,7 @@ steps:
 
       - seek-oss/aws-sm#v2.2.1:
           env:
-            ROLE_ARN: /buildkite/aws-credentials-server/role_arn
+            ROLE_ARN: "/buildkite/aws-credentials-server/role_arn"
 
       - https://github.com/outstand/docker-compose-buildkite-plugin.git#${PLUGIN_DOCKER_COMPOSE_VERSION}:
           run: server
