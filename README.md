@@ -25,3 +25,7 @@ services:
       - ~/.aws:/home/srv/.aws
       - ~/.awsvault:/home/srv/.awsvault
 ```
+
+## Inspiration
+
+- https://github.com/99designs/aws-vault
