@@ -9,7 +9,7 @@ Example:
 version: '3.8'
 services:
   aws-credentials-server:
-    image: 786715713882.dkr.ecr.us-east-1.amazonaws.com/aws-credentials-server:latest
+    image: outstand/aws-credentials-server:latest
     container_name: aws-credentials-server
     restart: unless-stopped
     ports:
