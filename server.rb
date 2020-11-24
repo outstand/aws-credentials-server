@@ -17,7 +17,7 @@ get '/' do
   'aws-credentials-server'
 end
 
-get '/latest/meta-data/iam/security-credentials' do
+get '/latest/meta-data/iam/security-credentials/?' do
   'local-credentials'
 end
 
@@ -26,16 +26,20 @@ get '/latest/meta-data/iam/security-credentials/local-credentials' do
   credentials
 end
 
-get '/latest/meta-data/instance-id' do
+get '/latest/meta-data/instance-id/?' do
   'aws-credentials-server'
 end
 
-get '/latest/meta-data/iam/info' do
+get '/latest/meta-data/iam/info/?' do
+  content_type :json
   '{"Code": "Success"}'
 end
 
 get '/latest/meta-data/dynamic/instance-identity/document' do
-  '{"region": "us-east-1"}'
+  content_type :json
+  {
+    region: ENV['AWS_REGION']
+  }.to_json
 end
 
 def credentials
